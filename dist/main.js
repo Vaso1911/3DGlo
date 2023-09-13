@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("Это модуль one.js"),console.log("Это модуль two.js")})();
