@@ -20,6 +20,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 
 /***/ }),
 
+/***/ "./modules/check-window.js":
+/*!*********************************!*\
+  !*** ./modules/check-window.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   isMobile: () => (/* binding */ isMobile)\n/* harmony export */ });\nconst isMobile = () => {\r\n  if (window.innerWidth < 768 || document.documentElement.clientWidth < 768 || document.body.clientWidth < 768) {\r\n    return true;\r\n    \r\n  }\r\n\r\n  return false;\r\n}\n\n//# sourceURL=webpack:///./modules/check-window.js?");
+
+/***/ }),
+
 /***/ "./modules/menu.js":
 /*!*************************!*\
   !*** ./modules/menu.js ***!
@@ -36,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   modal: () => (/* binding */ modal)\n/* harmony export */ });\nconst modal = () => {\r\n  const modal = document.querySelector('.popup')\r\n  const modalContent = document.querySelector('.popup-content')\r\n  const buttons = document.querySelectorAll('.popup-btn')\r\n  const closeBtn = modal.querySelector('.popup-close')\r\n  modalContent.style.transform = `scale(0)`\r\n  modalContent.style.transition = `transform .3s ease-in-out`\r\n\r\n  let count = 0\r\n  let idInterval\r\n\r\n  const anim = () => {\r\n    count++\r\n    idInterval = requestAnimationFrame(anim)\r\n\r\n    if (count <= 1) {\r\n      modalContent.style.transform = `scale(${count})`\r\n    } else {\r\n      cancelAnimationFrame(idInterval)\r\n    }\r\n  }\r\n  buttons.forEach(e => {\r\n    e.addEventListener('click', () => {\r\n      modal.style.display = 'block'\r\n      count = 0\r\n      setTimeout(anim, 300)\r\n    })\r\n  })\r\n\r\n  closeBtn.addEventListener('click', () => {\r\n    modal.style.display = 'none'\r\n    modalContent.style.transform = `scale(0)`\r\n  })\r\n}\n\n//# sourceURL=webpack:///./modules/modal.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   modal: () => (/* binding */ modal)\n/* harmony export */ });\n/* harmony import */ var _check_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./check-window */ \"./modules/check-window.js\");\n\r\n\r\nconst modal = () => {\r\n  const modal = document.querySelector('.popup')\r\n  const modalContent = document.querySelector('.popup-content')\r\n  const buttons = document.querySelectorAll('.popup-btn')\r\n  const closeBtn = modal.querySelector('.popup-close')\r\n  modalContent.style.transform = `scale(0)`\r\n  modalContent.style.transition = `transform .3s ease-in-out`\r\n\r\n  let count = 0\r\n  let idInterval\r\n\r\n  const anim = () => {\r\n    count++\r\n    idInterval = requestAnimationFrame(anim)\r\n\r\n    if (count <= 1) {\r\n      modalContent.style.transform = `scale(${count})`\r\n    } else {\r\n      cancelAnimationFrame(idInterval)\r\n    }\r\n  }\r\n\r\n\r\n  buttons.forEach(e => {\r\n    e.addEventListener('click', () => {\r\n      modal.style.display = 'block'\r\n      count = 0\r\n      setTimeout(anim, 300)\r\n    })\r\n  })\r\n\r\n  closeBtn.addEventListener('click', () => {\r\n    modal.style.display = 'none'\r\n    modalContent.style.transform = `scale(0)`\r\n  })\r\n\r\n  if ((0,_check_window__WEBPACK_IMPORTED_MODULE_0__.isMobile)()) {\r\n    modalContent.style.transform = `scale(1)`\r\n    clearTimeout(anim)\r\n  }\r\n}\n\n//# sourceURL=webpack:///./modules/modal.js?");
 
 /***/ }),
 

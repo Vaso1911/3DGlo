@@ -1,3 +1,5 @@
+import { isMobile } from "./check-window"
+
 export const modal = () => {
   const modal = document.querySelector('.popup')
   const modalContent = document.querySelector('.popup-content')
@@ -19,6 +21,8 @@ export const modal = () => {
       cancelAnimationFrame(idInterval)
     }
   }
+
+
   buttons.forEach(e => {
     e.addEventListener('click', () => {
       modal.style.display = 'block'
@@ -31,4 +35,9 @@ export const modal = () => {
     modal.style.display = 'none'
     modalContent.style.transform = `scale(0)`
   })
+
+  if (isMobile()) {
+    modalContent.style.transform = `scale(1)`
+    clearTimeout(anim)
+  }
 }
