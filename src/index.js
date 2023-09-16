@@ -1,5 +1,8 @@
-import { one } from './modules/one.js';
-import { two } from './modules/two.js';
+import { timer } from './modules/timer.js';
+import { menu } from './modules/menu.js';
+import { modal } from './modules/modal.js';
 
-one('22 september 2023')
-two()
+
+timer('22 september 2023')
+menu()
+modal()

@@ -16,27 +16,47 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_one_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/one.js */ \"./modules/one.js\");\n/* harmony import */ var _modules_two_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/two.js */ \"./modules/two.js\");\n\r\n\r\n\r\n(0,_modules_one_js__WEBPACK_IMPORTED_MODULE_0__.one)('22 september 2023')\r\n;(0,_modules_two_js__WEBPACK_IMPORTED_MODULE_1__.two)()\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer.js */ \"./modules/timer.js\");\n/* harmony import */ var _modules_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu.js */ \"./modules/menu.js\");\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal.js */ \"./modules/modal.js\");\n\r\n\r\n\r\n\r\n\r\n(0,_modules_timer_js__WEBPACK_IMPORTED_MODULE_0__.timer)('22 september 2023')\r\n;(0,_modules_menu_js__WEBPACK_IMPORTED_MODULE_1__.menu)()\r\n;(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_2__.modal)()\r\n\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
-/***/ "./modules/one.js":
-/*!************************!*\
-  !*** ./modules/one.js ***!
-  \************************/
+/***/ "./modules/menu.js":
+/*!*************************!*\
+  !*** ./modules/menu.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   one: () => (/* binding */ one)\n/* harmony export */ });\nconst one = (deadline) => {\r\n  const timerHours = document.getElementById('timer-hours')\r\n  const timerMinutes = document.getElementById('timer-minutes')\r\n  const timerSeconds = document.getElementById('timer-seconds')\r\n\r\n  const formatTime = (num) => {\r\n    return num < 10 ? '0' + num : num;\r\n  }\r\n  const getTimeRemaning = () => {\r\n    let dateStop = new Date(deadline).getTime()\r\n    let dateNow = new Date().getTime()\r\n    let timeRemaning = (dateStop - dateNow) / 1000\r\n    let hours = Math.floor((timeRemaning / 3600))\r\n    let minutes = Math.floor((timeRemaning / 60) % 60)\r\n    let seconds = Math.floor(timeRemaning % 60)\r\n\r\n    return { timeRemaning, hours, minutes, seconds, }\r\n  }\r\n\r\n  const upddateClock = () => {\r\n    let getTime = getTimeRemaning()\r\n    timerHours.textContent = `${formatTime(getTime.hours)}`\r\n    timerMinutes.textContent = `${formatTime(getTime.minutes)}`\r\n    timerSeconds.textContent = `${formatTime(getTime.seconds)}`\r\n\r\n    if (getTime.timeRemaning > 0) {\r\n      setTimeout(upddateClock, 1000)\r\n    } else {\r\n      timerHours.textContent = '00'\r\n      timerMinutes.textContent = '00'\r\n      timerSeconds.textContent = '00'\r\n    }\r\n\r\n  }\r\n  upddateClock()\r\n\r\n}\n\n//# sourceURL=webpack:///./modules/one.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   menu: () => (/* binding */ menu)\n/* harmony export */ });\n/* harmony import */ var _smooth_scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./smooth-scroll */ \"./modules/smooth-scroll.js\");\n\r\n\r\nconst menu = () => {\r\n  const menuBtn = document.querySelector('.menu')\r\n  const menu = document.querySelector('menu')\r\n  const closeBtn = menu.querySelector('.close-btn')\r\n  const menuItems = menu.querySelectorAll('ul>li>a')\r\n  const serviceLink = document.querySelector('[href=\"#service-block\"]')\r\n\r\n  ;(0,_smooth_scroll__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)(serviceLink)\r\n\r\n  menuItems.forEach(el => {\r\n    el.addEventListener('click', (0,_smooth_scroll__WEBPACK_IMPORTED_MODULE_0__.smoothScroll)(el))\r\n  })\r\n\r\n  const handleMenu = () => {\r\n    menu.classList.toggle('active-menu')\r\n  }\r\n\r\n  menuBtn.addEventListener('click', handleMenu)\r\n  closeBtn.addEventListener('click', handleMenu)\r\n\r\n  menuItems.forEach(e => e.addEventListener('click', handleMenu))\r\n}\n\n//# sourceURL=webpack:///./modules/menu.js?");
 
 /***/ }),
 
-/***/ "./modules/two.js":
-/*!************************!*\
-  !*** ./modules/two.js ***!
-  \************************/
+/***/ "./modules/modal.js":
+/*!**************************!*\
+  !*** ./modules/modal.js ***!
+  \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   two: () => (/* binding */ two)\n/* harmony export */ });\nconst two = () => {\r\n  console.log('Это модуль two.js');\r\n}\n\n//# sourceURL=webpack:///./modules/two.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   modal: () => (/* binding */ modal)\n/* harmony export */ });\nconst modal = () => {\r\n  const modal = document.querySelector('.popup')\r\n  const modalContent = document.querySelector('.popup-content')\r\n  const buttons = document.querySelectorAll('.popup-btn')\r\n  const closeBtn = modal.querySelector('.popup-close')\r\n  modalContent.style.transform = `scale(0)`\r\n  modalContent.style.transition = `transform .3s ease-in-out`\r\n\r\n  let count = 0\r\n  let idInterval\r\n\r\n  const anim = () => {\r\n    count++\r\n    idInterval = requestAnimationFrame(anim)\r\n\r\n    if (count <= 1) {\r\n      modalContent.style.transform = `scale(${count})`\r\n    } else {\r\n      cancelAnimationFrame(idInterval)\r\n    }\r\n  }\r\n  buttons.forEach(e => {\r\n    e.addEventListener('click', () => {\r\n      modal.style.display = 'block'\r\n      count = 0\r\n      setTimeout(anim, 300)\r\n    })\r\n  })\r\n\r\n  closeBtn.addEventListener('click', () => {\r\n    modal.style.display = 'none'\r\n    modalContent.style.transform = `scale(0)`\r\n  })\r\n}\n\n//# sourceURL=webpack:///./modules/modal.js?");
+
+/***/ }),
+
+/***/ "./modules/smooth-scroll.js":
+/*!**********************************!*\
+  !*** ./modules/smooth-scroll.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   smoothScroll: () => (/* binding */ smoothScroll)\n/* harmony export */ });\nconst smoothScroll = (link) => {\r\n\r\n  link.addEventListener('click', (e) => {\r\n    e.preventDefault()\r\n\r\n    const linkId = link.getAttribute('href').substring(1)\r\n    const section = document.getElementById(linkId)\r\n\r\n    if (section) {\r\n      const topOffset = section.offsetTop\r\n\r\n      window.scrollTo({\r\n        top: topOffset,\r\n        behavior: 'smooth'\r\n      });\r\n    }\r\n  })\r\n\r\n}\n\n//# sourceURL=webpack:///./modules/smooth-scroll.js?");
+
+/***/ }),
+
+/***/ "./modules/timer.js":
+/*!**************************!*\
+  !*** ./modules/timer.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   timer: () => (/* binding */ timer)\n/* harmony export */ });\nconst timer = (deadline) => {\r\n  const timerHours = document.getElementById('timer-hours')\r\n  const timerMinutes = document.getElementById('timer-minutes')\r\n  const timerSeconds = document.getElementById('timer-seconds')\r\n\r\n  const formatTime = (num) => {\r\n    return num < 10 ? '0' + num : num;\r\n  }\r\n  const getTimeRemaning = () => {\r\n    let dateStop = new Date(deadline).getTime()\r\n    let dateNow = new Date().getTime()\r\n    let timeRemaning = (dateStop - dateNow) / 1000\r\n    let hours = Math.floor((timeRemaning / 3600))\r\n    let minutes = Math.floor((timeRemaning / 60) % 60)\r\n    let seconds = Math.floor(timeRemaning % 60)\r\n\r\n    return { timeRemaning, hours, minutes, seconds, }\r\n  }\r\n\r\n  const upddateClock = () => {\r\n    let getTime = getTimeRemaning()\r\n    timerHours.textContent = `${formatTime(getTime.hours)}`\r\n    timerMinutes.textContent = `${formatTime(getTime.minutes)}`\r\n    timerSeconds.textContent = `${formatTime(getTime.seconds)}`\r\n\r\n    if (getTime.timeRemaning > 0) {\r\n      setTimeout(upddateClock, 1000)\r\n    } else {\r\n      timerHours.textContent = '00'\r\n      timerMinutes.textContent = '00'\r\n      timerSeconds.textContent = '00'\r\n    }\r\n\r\n  }\r\n  upddateClock()\r\n\r\n}\n\n//# sourceURL=webpack:///./modules/timer.js?");
 
 /***/ })
 
