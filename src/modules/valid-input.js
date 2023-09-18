@@ -7,11 +7,29 @@ export const validInputNumber = () => {
   const telInputs = document.querySelectorAll('[type="tel"]')
   const textInput = document.querySelector('.mess')
 
+const validateName = (name) =>{
+    const regex = /[^-\u0400-\u04FF\s]/g;
+    name = name.replace(regex, "");
+    name = name.replace(/(^[-\s]+)|([- ]+$)/g, "");
+    name = name.replace(/[-\s]+/g, "-");
+    name = name.toLowerCase();
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    
+    return name;
+  }
+  
+const validateBlur = (event) => {
+    const input = event.target;
+    const inputValue = input.value;
+    const formattedValue = validateName(inputValue);
+    input.value = formattedValue;
+  }
 
   nameInputs.forEach((input) => {
     input.addEventListener('input', (e) => {
       e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\s-]/g, '');
     });
+input.addEventListener('blur', validateBlur)
   });
 
   emailInputs.forEach((input) => {
@@ -29,9 +47,6 @@ export const validInputNumber = () => {
         e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\s-]/g, '')
       })
   });
-
-
-
 
   inputs.forEach(input => {
     input.addEventListener('input', (e) => {
