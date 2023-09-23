@@ -1,3 +1,6 @@
+import { animationNum } from "./helper"
+
+animationNum
 export const calc = (price) => {
   const calcBlock = document.querySelector('.calc-block')
   const calcType = document.querySelector('.calc-type')
@@ -6,21 +9,7 @@ export const calc = (price) => {
   const calcDay = document.querySelector('.calc-day')
   const total = document.getElementById('total')
 
-  const animationNum = (value, elem) => {
-    let time = 1000;
-    let step = 1;
-    let num = 0;
-    let timeNum = time / (parseInt(value) / step); 
-  
-    let interval = setInterval(() => {
-      num += step;
-      if (num >= parseInt(value)) { 
-        num = parseInt(value);
-        clearInterval(interval);
-      }
-      elem.textContent = num;
-    }, timeNum);
-  };
+
   const countCalc = () => {
     const calcTypevalue = +calcType.options[calcType.selectedIndex].value
     const calcSquareValue = calcSquare.value
@@ -47,6 +36,7 @@ export const calc = (price) => {
     }
 
     animationNum(totalValue, total)
+    
   }
 
 
