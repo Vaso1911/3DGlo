@@ -6,19 +6,6 @@ export const calc = (price) => {
   const calcDay = document.querySelector('.calc-day')
   const total = document.getElementById('total')
 
-  // const animationNum = (value, elem) => {
-  //   let time = 4000
-  //   let step = 1
-  //   let num = 0
-  //   let timeNum = time / (+value / step)
-  //   let interval = setInterval(() => {
-  //     num += step
-  //     if (num == value) {
-  //       clearInterval(interval)
-  //     }
-  //     elem.textContent = num
-  //   })
-  // }
   const animationNum = (value, elem) => {
     let time = 1000;
     let step = 1;
@@ -59,9 +46,6 @@ export const calc = (price) => {
       totalValue = 0
     }
 
-
-
-    // total.textContent = totalValue
     animationNum(totalValue, total)
   }
 
