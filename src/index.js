@@ -4,6 +4,7 @@ import { modal } from './modules/modal.js';
 import { validInputNumber } from './modules/valid-input.js';
 import { tabs } from './modules/tabs.js';
 import { slider } from './modules/slider.js';
+import { calc } from './modules/calc.js';
 
 timer('24 september 2023')
 menu()
@@ -19,3 +20,4 @@ slider(
   'portfolio-item-active',
   'dot-active'
 )
+calc(100)
