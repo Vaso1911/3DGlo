@@ -46,7 +46,7 @@ export const validInputNumber = () => {
     });
 
     textInput.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\s-]/g, '')
+      e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ0-9\s-\.,!?;:'"()]/g, '')
     })
   });
 
