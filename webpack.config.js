@@ -9,9 +9,17 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    static:{
+    static: {
       directory: './dist',
       watch: true
     }
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(scss|css)$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+    ],
+  },
 }

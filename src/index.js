@@ -1,3 +1,4 @@
+import './main.scss';
 import { timer } from './modules/timer.js';
 import { menu } from './modules/menu.js';
 import { modal } from './modules/modal.js';
@@ -33,7 +34,7 @@ sendForm({
 })
 
 
-
+console.log('asdsadsadsadasdasdsadsadsadsad');
 
 
 
